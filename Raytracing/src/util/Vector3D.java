@@ -67,6 +67,17 @@ public class Vector3D {
         return this.x * point.x + this.y * point.y + this.z * point.z;
     }
 
+    public double dot(Normal normal) {
+        return this.x * normal.x + this.y * normal.y + this.z * normal.z;
+    }
+
+    public void normalize() {
+        double length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+        this.x /= length;
+        this.y /= length;
+        this.z /= length;
+    }
+
     public Vector3D cross(Vector3D vector) {
         return new Vector3D(this.y * vector.z - this.z * vector.y,
                             this.z * vector.x - this.x * vector.z,

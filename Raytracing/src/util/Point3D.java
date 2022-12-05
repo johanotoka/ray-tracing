@@ -94,4 +94,8 @@ public class Point3D {
     public double dot(Vector3D vector) {
         return this.x * vector.x + this.y * vector.y + this.z * vector.z;
     }
+
+    public double dot(Normal normal) {
+        return this.x * normal.x + this.y * normal.y + this.z * normal.z;
+    }
 }
