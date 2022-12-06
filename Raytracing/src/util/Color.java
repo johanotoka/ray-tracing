@@ -59,7 +59,7 @@ public class Color {
         return new Color(this.r / scalar, this.g / scalar, this.b / scalar);
     }
 
-    public int toInteger() {
+    public int toRGB() {
         int r = (int) (this.r * 255);
         int g = (int) (this.g * 255);
         int b = (int) (this.b * 255);
