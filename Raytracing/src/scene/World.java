@@ -10,7 +10,7 @@ public class World {
     public ArrayList<Shape> shapes;
     public Color backgroundColor;
 
-    public World(int width, int height, double pixelSize, Color backgroundColor) {
+    public World(int width, int height, double pixelSize, ArrayList<Shape> shapes, Color backgroundColor) {
         this.viewPlane = new ViewPlane(width, height, pixelSize);
 
         this.shapes = new ArrayList<Shape>();
