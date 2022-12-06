@@ -18,8 +18,6 @@ import geometry.*;
 
 public class Raytracer extends Canvas {
 
-//    public static final int HEIGHT = 400;
-//    public static final int WIDTH = 400;
     public static final int NUM_OF_SAMPLE = 4;
 
     public static int near;
