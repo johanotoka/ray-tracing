@@ -131,7 +131,7 @@ public class Raytracer extends Canvas {
                     width_res = Integer.parseInt(tokens[1]);
                     height_res = Integer.parseInt(tokens[2]);
                 } else if (tokens[0].equals("SPHERE")) {
-                    shapes.add(new Sphere(new Point3D(Double.parseDouble(tokens[2]), Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4])), 60, new Color(Double.parseDouble(tokens[8]), Double.parseDouble(tokens[9]), Double.parseDouble(tokens[10]))));
+                    shapes.add(new Sphere(new Point3D(Double.parseDouble(tokens[2]), Double.parseDouble(tokens[3]), Double.parseDouble(tokens[4])), Double.parseDouble(tokens[5]), new Color(Double.parseDouble(tokens[8]), Double.parseDouble(tokens[9]), Double.parseDouble(tokens[10]))));
                 } else if (tokens[0].equals("BACK")) {
                     Color bg = new Color(Double.parseDouble(tokens[1]), Double.parseDouble(tokens[2]), Double.parseDouble(tokens[3]));
                     world = new World(width_res, height_res, 1, shapes, bg);
