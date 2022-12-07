@@ -2,17 +2,45 @@ package geometry;
 
 import util.*;
 
+/**
+ * This class represents a sphere in the scene.
+ *
+ * @author Laiba and Steeve
+ */
+
 public class Sphere extends Shape {
 
+    /**
+     * The center of the sphere.
+     */
     public Point3D center;
+
+    /**
+     * The radius of the sphere.
+     */
     public double radius;
 
+    /**
+     * Constructor of the Sphere class.
+     *
+     * @param center
+     * @param radius
+     * @param color
+     *
+     * @return
+     */
     public Sphere(Point3D center, double radius, Color color) {
         this.center = new Point3D(center);
         this.radius = radius;
         this.color = new Color(color);
     }
 
+    /**
+     * This method returns the distance between the ray and the sphere.
+     *
+     * @param ray
+     * @return
+     */
     @Override
     public double hit(Ray ray) {
         double a = ray.direction.dot(ray.direction);

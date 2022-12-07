@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -16,26 +15,72 @@ import util.Color;
 
 import geometry.*;
 
+/**
+ * Raytracer class
+ *
+ * @author Laiba and Steeve
+ *
+ */
+
 public class Raytracer extends Canvas {
 
-    public static final int NUM_OF_SAMPLE = 4;
-
+    /**
+     * The near plane of the camera
+     */
     public static int near;
+
+    /**
+     * The left plane of the camera
+     */
     public static int left;
+
+    /**
+     * The right plane of the camera
+     */
     public static int right;
+
+    /**
+     * The bottom plane of the camera
+     */
     public static int bottom;
+
+    /**
+     * The top plane of the camera
+     */
     public static int top;
+
+    /**
+     * The width of the image
+     */
     public static int width_res;
+
+    /**
+     * The height of the image
+     */
     public static int height_res;
 
+    /**
+     * The world object
+     */
     public static World world;
+
+    /**
+     * The image object
+     */
     public static Image image;
+
+    /**
+     * The camera object
+     */
     public static Projection projection;
 
-    public static void reader() {
-
-    }
-
+    /**
+     * This method traces the rays onto the image.
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     private static void tracer(int x, int y) {
 
         Ray ray = projection.generateRay(new Point2D(x, y));
@@ -49,15 +94,14 @@ public class Raytracer extends Canvas {
 
         image.buffer.setRGB(x, y, color.toRGB());
 
-//        Ray ray = new Ray(new Point3D(x - world.viewPlane.width / 2 + 0.5, y - world.viewPlane.height / 2 + 0.5, 100), new Vector3D(0.0, 0.0, -1.0));
-//
-//        if (sphere.hit(ray) != 0) {
-//            image.buffer.setRGB(x, y, sphere.color.toRGB());
-//        } else {
-//            image.buffer.setRGB(x, y, new Color(1.0, 1.0, 1.0).toRGB());
-//        }
     }
 
+    /**
+     * Main method
+     *
+     * @param args
+     * @throws FileNotFoundException
+     */
     public static void main(String[] args) {
 
         if (args.length != 1) {
@@ -67,13 +111,10 @@ public class Raytracer extends Canvas {
 
         try {
             Scanner reader = new Scanner(new FileInputStream(args[0]));
-
             ArrayList<Shape> shapes = new ArrayList<Shape>();
 
             while (reader.hasNext()) {
                 String line = reader.nextLine();
-
-                System.out.println(line);
 
                 String[] tokens = line.split(" ");
                 if (tokens[0].equals("NEAR")) {
@@ -104,10 +145,6 @@ public class Raytracer extends Canvas {
         long start = System.nanoTime();
         image = new Image("image.png");
         projection = new Orthographic();
-
-//        BufferedImage buffer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-
-        Sphere sphere = new Sphere(new Point3D(0, 0, 0), 60, new Color(1.0, 0, 0));
 
         for (int x = 0; x < world.viewPlane.width; x++) {
             for (int y = 0; y < world.viewPlane.height; y++) {
